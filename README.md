@@ -1,3 +1,3 @@
 # Blog
 
-This is just to see how Jekyll works.
+Static page generated blog. See [gweax.de](https://gweax.de/blog).
