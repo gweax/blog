@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gweax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+
+<body>
+    <h1>Gweax' blog</h1>
+
+    {{^pagination.index}}
+        {{> author }}
+    {{/pagination.index}}
+
+    {{#pagination.files}}
+    <article>
+        <h1><a href="/{{{ path }}}/">{{title}}</a></h1>
+        <p>Written on {{ prettyDate }} by {{ author }}</p>
+        
+        {{{ excerpt }}}
+        <a href="/{{{ path }}}/">more</a>
+    </article>
+    {{/pagination.files}}
+
+    <nav class="navigation">
+        {{#pagination.previous}}
+            <a href="/{{{ pagination.previous.path }}}" class="navigation__newer">Newer</a>
+        {{/pagination.previous}}
+        {{#pagination.next}}
+            <a href="/{{{ pagination.next.path }}}" class="navigation__older">Older</a>
+        {{/pagination.next}}
+    </nav>
+</body>
+
+</html>
