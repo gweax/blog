@@ -9,21 +9,30 @@
 </head>
 
 <body>
-    <h1>{{ title }}</h1>
-    <p>
-        Written on {{ prettyDate }} by {{ author }}
-    </p>
+    <header>
+        {{> header }}
+    </header>
 
-    {{#originalPublishUrl}}
-    <p>
-        This post was originally published at <a href="{{{ originalPublishUrl }}}">{{ originalPublishText }}</a>
-        {{ originalPublishNote }}
-    </p>
-    {{/originalPublishUrl}}
-    
-    {{{ contents }}}
+    <main class="article">
+        <h1 class="article__headline">{{ title }}</h1>
+        <p class="article__meta">
+            Written on {{ prettyDate }} by {{ author }}
+        </p>
 
-    {{> author }}
+        {{#originalPublishUrl}}
+        <p class="article__meta">
+            This post was originally published at <a href="{{{ originalPublishUrl }}}">{{ originalPublishText }}</a> {{ originalPublishNote }}
+        </p>
+        {{/originalPublishUrl}}
 
+        <div class="content">
+            {{{ contents }}}
+        </div>
+    </main>
+
+    <footer class="bio bio--footer">
+        {{> author }}
+    </footer>
 </body>
+
 </html>

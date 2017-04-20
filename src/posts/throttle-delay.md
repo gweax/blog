@@ -29,8 +29,8 @@ Let’s call the first way “throttle” and the second “delay”. How do we 
         return;
       }
 
-      throttleTimeout = window.setTimeout(function () {
-        throttleTimeout = null; // or any falsy value
+      throttleTimeout = setTimeout(function () {
+        throttleTimeout = null;
         sayUhHuh();
       }, 10000); // 10 seconds
     }
@@ -42,9 +42,9 @@ Here we do the throttling. Instead of calling the `sayUhHuh` function every time
     var delayTimeout;
 
     function delayReply() {
-      window.clearTimeout(delayTimeout);
+      clearTimeout(delayTimeout);
 
-      delayTimeout = window.setTimeout(reply, 1000); // 1 second
+      delayTimeout = setTimeout(reply, 1000); // 1 second
     }
 
     mom.addEventListener("talk", delayReply, false);

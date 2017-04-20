@@ -9,28 +9,38 @@
 </head>
 
 <body>
-    <h1>Gweax' blog</h1>
+    <header>
+        {{> header }}
+    </header>
 
     {{^pagination.index}}
+    <aside class="bio bio--speech-bubble">
         {{> author }}
+    </aside>
     {{/pagination.index}}
 
-    {{#pagination.files}}
-    <article>
-        <h1><a href="/{{{ path }}}/">{{title}}</a></h1>
-        <p>Written on {{ prettyDate }} by {{ author }}</p>
-        
-        {{{ excerpt }}}
-        <a href="/{{{ path }}}/">more</a>
-    </article>
-    {{/pagination.files}}
+    <main>
+        {{#pagination.files}}
+        <article class="teaser">
+            <h1 class="teaser__headline"><a href="/{{{ path }}}/" class="teaser__headline-link">{{title}}</a></h1>
+            <p class="teaser__meta">Written on {{ prettyDate }}</p>
+
+            <div class="content">
+                {{{ excerpt }}}
+
+                <a href="/{{{ path }}}/" class="teaser__more-link">read full article</a>
+            </div>            
+
+        </article>
+        {{/pagination.files}}
+    </main>
 
     <nav class="navigation">
         {{#pagination.previous}}
-            <a href="/{{{ pagination.previous.path }}}" class="navigation__newer">Newer</a>
+        <a href="/{{{ pagination.previous.path }}}" class="navigation__button navigation__button--newer">Newer</a>
         {{/pagination.previous}}
         {{#pagination.next}}
-            <a href="/{{{ pagination.next.path }}}" class="navigation__older">Older</a>
+        <a href="/{{{ pagination.next.path }}}" class="navigation__button navigation__button--older">Older</a>
         {{/pagination.next}}
     </nav>
 </body>
