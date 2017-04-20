@@ -62,6 +62,7 @@ header {
 
 .bio--footer {
     margin: 0;
+    padding: 0.5em 1.25em;
 }
 
 .navigation {
@@ -147,4 +148,22 @@ a:focus {
 .article__meta,
 .teaser__meta {
     font-size: 0.8em;
+}
+
+.teaser__more-link {
+    display: inline-flex;
+}
+
+.teaser__more-link::after {
+    float: right;
+    content: '↝';
+    font-family: sans-serif;
+    text-decoration: none;
+    margin-left: 0.3em;
+}
+
+@media (min-width: 40em) {
+    .article__headline {
+        font-size: 1.8em;
+    }
 }

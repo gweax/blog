@@ -29,6 +29,9 @@ var isDevMode = process.argv.indexOf('--dev') !== -1;
 Metalsmith(__dirname)
     .source('./src')
     .destination('./build')
+    .metadata({
+        baseUrl: isDevMode ? 'http://localhost:8080' : 'https://gweax.de'
+    })
     .clean(true)
     .use(runIf(isDevMode, watch({
         '**/*': '**/*'
