@@ -8,6 +8,9 @@ var Metalsmith = require('metalsmith'),
     pagination = require('metalsmith-pagination'),
     excerpt = require('metalsmith-excerpts'),
     copy = require('metalsmith-copy'),
+    watch = require('metalsmith-watch'),
+    serve = require('metalsmith-serve'),
+    runIf = require('metalsmith-if'),
     moment = require('moment');
 
 function prettyDate() {
@@ -21,11 +24,18 @@ function prettyDate() {
     }
 }
 
+var isDevMode = process.argv.indexOf('--dev') !== -1;
 
 Metalsmith(__dirname)
     .source('./src')
     .destination('./build')
     .clean(true)
+    .use(runIf(isDevMode, watch({
+        '**/*': '**/*'
+    })))
+    .use(runIf(isDevMode, serve({
+        port: 8080
+    })))
     .use(drafts())
     .use(collections({
         posts: {
