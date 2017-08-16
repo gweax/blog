@@ -24,6 +24,27 @@ header {
     font-family: sans-serif;
 }
 
+article aside {
+    font-size: 0.8em;
+    border: 1px dashed gray;
+    padding: 0.5em;
+}
+
+figure {
+    margin: 1em auto;
+    display: table;
+}
+
+blockquote {
+    border-left: 0.2em solid gray;
+    padding-left: 1em;
+    margin: 1em;
+}
+
+figcaption {
+    font-size: 0.8em;
+}
+
 .header__title {
     margin: 0;
     line-height: 1;
